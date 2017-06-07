@@ -1,0 +1,35 @@
+{
+  "name": "react-sankey",
+  "version": "0.0.1",
+  "description": "React sankey diagramm",
+  "main": "src/components/react-sankey.component.jsx",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unbugx/react-sankey.git"
+  },
+  "keywords": [
+    "react",
+    "sankey",
+    "react-sankey"
+  ],
+  "author": "Artem Sitnikov <seestein9@gmail.com> (http://unbug.ru/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unbugx/react-sankey/issues"
+  },
+  "homepage": "https://github.com/unbugx/react-sankey#readme",
+  "devDependencies": {
+    "@storybook/addon-options": "^3.0.1",
+    "@storybook/react": "^3.0.1",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.5"
+  },
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
+}

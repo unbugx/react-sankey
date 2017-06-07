@@ -1,0 +1,27 @@
+.qb-node rect {
+  fill: #e5e6ea;
+  shape-rendering: crispEdges;
+}
+
+.qb-node {
+  text {
+    font-size: 13px;
+  }
+
+  .qb-arrow {
+    stroke: #9ea2af;
+    stroke-width: 1px
+  }
+
+  .qb-value {
+    font-size: 16px;
+
+    tspan {
+      fill: #eaeaea;
+    }
+  }
+}
+
+.qb-link {
+  fill: url(#linear-gradient);
+}
