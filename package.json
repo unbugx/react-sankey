@@ -1,6 +1,6 @@
 {
   "name": "react-sankey",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React sankey diagramm",
   "main": "src/components/react-sankey.component.jsx",
   "scripts": {
@@ -26,10 +26,9 @@
     "@storybook/addon-options": "^3.0.1",
     "@storybook/react": "^3.0.1",
     "node-sass": "^4.5.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "sass-loader": "^6.0.5"
   },
-  "dependencies": {
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
-  }
+  "dependencies": {}
 }
