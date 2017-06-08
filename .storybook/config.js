@@ -5,7 +5,7 @@ setOptions({
   name: 'Sankey chart storybook',
   url: 'http://unbug.ru/',
   goFullScreen: false,
-  showLeftPanel: false,
+  showLeftPanel: true,
   showDownPanel: false,
   showSearchBox: false,
   downPanelInRight: false,

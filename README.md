@@ -5,10 +5,11 @@ Sankey diagramm. **Still under active development.**
 
 ![screenshot](screenshot.jpg?raw=true "Example")
 
-## TODO
+See more examples in `.storybook` folder.
 
-*   Custom node component
-*   Style customization
+##TODO
+*   Add lint
+*   Some improvements
 
 ## Installation
 
@@ -68,7 +69,7 @@ Sankey diagramm. **Still under active development.**
       createLink(13, 15)
     ];
         
-    class ReactSankey extends React.Component {
+    class App extends React.Component {
         
         render() {
             <ReactSankey

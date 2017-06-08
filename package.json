@@ -1,6 +1,6 @@
 {
   "name": "react-sankey",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React sankey diagramm",
   "main": "src/components/react-sankey.component.jsx",
   "scripts": {

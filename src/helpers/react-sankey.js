@@ -21,7 +21,7 @@ function reconcileNodeHeight(node, chartConfig, maxValue) {
 
 function reconcileNodeChildren(node, chartConfig, rootID, links, nodes, sourceId, level) {
   const children = links
-    .filter(link => parseInt(link.sourceId, 10) === parseInt(sourceId, 10))
+    .filter(link => link.sourceId == sourceId)
     .map(link => ({ ...createTree(chartConfig, rootID, links, nodes, link.targetId, level + 1), parent: node })); // eslint-disable-line no-use-before-define
 
   return {
@@ -104,8 +104,8 @@ export function getTreeNodes(chartConfig, tree) {
 // Returns d attribute to build proper path between nodes
 export function getTreePaths(chartConfig, links, nodes) {
   return links.map((link) => {
-    const sourceNode = nodes.find(node => parseInt(node.id, 10) === parseInt(link.sourceId, 10));
-    const targetNode = nodes.find(node => parseInt(node.id, 10) === parseInt(link.targetId, 10));
+    const sourceNode = nodes.find(node => node.id == link.sourceId);
+    const targetNode = nodes.find(node => node.id == link.targetId);
 
     if (!sourceNode || !targetNode) {
       throw new Error('should never happen');
@@ -115,7 +115,7 @@ export function getTreePaths(chartConfig, links, nodes) {
     const { x: x2, y: y2 } = targetNode;
 
     const targetsHeight = sourceNode.children.reduce((height, child) => height + child.height, 0);
-    const targetIndex = sourceNode.children.findIndex(child => parseInt(child.id, 10) === parseInt(targetNode.id, 10));
+    const targetIndex = sourceNode.children.findIndex(child => child.id == targetNode.id);
     const curvesStartPositionsPercents = sourceNode.children.map(child => (child.height * 100) / targetsHeight);
 
     // Get y of first point of path
