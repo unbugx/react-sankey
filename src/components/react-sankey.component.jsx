@@ -4,7 +4,7 @@ import { createTree, getTreeNodes, getTreePaths, getNodeBranchHeight } from '../
 
 import './react-sankey.component.scss';
 
-const chartConfig = {
+const defaultChartConfig = {
   padding: { top: 10, right: 0, bottom: 10, left: 0 },
   node: {
     width: 150,
@@ -25,11 +25,14 @@ export function formatNumber(value) {
 
 class ReactSankey extends React.Component {
 
-  static renderNodeArrows(node) {
+  renderNodeArrows(node) {
+    const chartConfig = this.getConfig();
+    const className = this.props.arrowClass ? this.props.arrowClass : 'qb-node-arrow';
+
     if (node.isFirstChild && node.isLastChild) {
       return (
         <path
-          className="qb-arrow"
+          className={className}
           d={`
             M${-10} ${20.5} h-${chartConfig.link.width}
             M${-10} ${20.5} l${-4} ${-4}
@@ -42,7 +45,7 @@ class ReactSankey extends React.Component {
     if (node.isFirstChild) {
       return (
         <path
-          className="qb-arrow"
+          className={className}
           d={`
             M${-10} ${20.5} h-${chartConfig.link.width}
             M${-10} ${20.5} l${-4} ${-4}
@@ -56,7 +59,7 @@ class ReactSankey extends React.Component {
     if (node.isLastChild) {
       return (
         <path
-          className="qb-arrow"
+          className={className}
           d={`
             M${-10} ${20.5} h-${parseInt(chartConfig.link.width / 3, 10) - 10}
             M${-10} ${20.5} l${-4} ${-4}
@@ -68,7 +71,7 @@ class ReactSankey extends React.Component {
 
     return (
       <path
-        className="qb-arrow"
+        className={className}
         d={`
           M${-10} ${20.5} h-${parseInt(chartConfig.link.width / 3, 10) - 10}
           M${-10} ${20.5} l${-4} ${-4}
@@ -79,11 +82,17 @@ class ReactSankey extends React.Component {
     );
   }
 
-  static renderPath(path) {
-    return <path key={path.id} className="qb-link" d={path.d} />;
+  renderPath(path) {
+    const className = this.props.linkClass ? this.props.linkClass : 'qb-link';
+    return <path key={path.id} className={className} d={path.d} />;
   }
 
-  static renderNode(node, hasArrows) {
+  renderNode(chartConfig, node) {
+
+    if (this.props.customNode) {
+      return this.props.customNode(chartConfig, node)
+    }
+
     return (
       <g key={node.id} className="qb-node" transform={`translate(${node.x},${node.y})`}>
         <rect height={node.height} width={chartConfig.node.width} />
@@ -91,13 +100,28 @@ class ReactSankey extends React.Component {
         <text className="qb-value" x={30} y={50}>
           {`${formatNumber(node.value)}`}
         </text>
-
-        {chartConfig.link.width >= 60 && hasArrows && ReactSankey.renderNodeArrows(node)}
       </g>
     );
   }
 
+  renderArrow(node) {
+    if (node.id == this.props.rootID) {
+      return null;
+    }
+
+    return (
+      <g key={node.id} className="qb-arrow" transform={`translate(${node.x},${node.y})`}>
+        {this.renderNodeArrows(node)}
+      </g>
+    );
+  }
+
+  getConfig() {
+    return this.props.chartConfig ? this.props.chartConfig : defaultChartConfig;
+  }
+
   render() {
+    const chartConfig = this.getConfig();
     const tree = createTree(chartConfig, this.props.rootID, this.props.links, this.props.nodes, this.props.rootID);
     const nodes = getTreeNodes(chartConfig, tree);
     const pathes = getTreePaths(chartConfig, this.props.links, nodes);
@@ -120,12 +144,13 @@ class ReactSankey extends React.Component {
       <svg width={chartWidth + left + right} height={chartHeight + top + bottom}>
         <g transform={`translate(${left},${top})`}>
 
-          {pathes.map(path => ReactSankey.renderPath(path))}
-          {nodes.map(node => ReactSankey.renderNode(node, this.props.hasArrows))}
+          {pathes.map(path => this.renderPath(path))}
+          {nodes.map(node => this.renderNode(chartConfig, node))}
+          {chartConfig.link.width >= 60 && this.props.hasArrows && nodes.map(node => this.renderArrow(node))}
 
           <linearGradient id="linear-gradient">
-            <stop offset="0%" stopColor="#dee0e4" />
-            <stop offset="100%" stopColor="#bdc0c7" />
+            <stop offset="0%" stopColor="#D1DFE0" />
+            <stop offset="100%" stopColor="#D5EDEF" />
           </linearGradient>
         </g>
       </svg>
