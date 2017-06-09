@@ -5,7 +5,7 @@ Sankey diagramm. **Still under active development.**
 
 ![screenshot](screenshot.jpg?raw=true "Example")
 
-See more examples in `.storybook` folder.
+See more examples in storybook `npm run storybook` - http://localhost:9001/ .
 
 ##TODO
 *   Add lint
@@ -17,7 +17,7 @@ See more examples in `.storybook` folder.
 
 ## Usage
 
-    import SankeyChart from 'react-sankey';
+    import ReactSankey from 'react-sankey';
         
     const createNode = (title, value, id) => ({ title, value, id });
     const createLink = (sourceId, targetId) => ({ sourceId, targetId });
@@ -37,7 +37,7 @@ See more examples in `.storybook` folder.
       '11': createNode('Conversion', 348, 11),
       '12': createNode('Morocco', 1983082, 12),
       '13': createNode('South Africa', 1290205, 13),
-      '14': createNode('Show offer', 348123, 14),
+      '14': createNode('Italy', 348123, 14),
       '15': createNode('Conversion', 123, 15),
       '16': createNode('Mali', 1201, 16),
       '17': createNode('Conversion', 1302, 17),

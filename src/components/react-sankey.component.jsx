@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createTree, getTreeNodes, getTreePaths, getNodeBranchHeight } from '../helpers/react-sankey';
 
-import './react-sankey.component.scss';
+import './react-sankey.component.css';
 
 const defaultChartConfig = {
   padding: { top: 10, right: 0, bottom: 10, left: 0 },

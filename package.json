@@ -1,12 +1,11 @@
 {
   "name": "react-sankey",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "React sankey diagramm",
   "main": "build/components/react-sankey.component.js",
   "scripts": {
-    "test": "mocha --reporter spec",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "prepublish": "babel --presets=es2015,stage-0 --plugins=transform-react-jsx src --out-dir build"
+    "prepublish": "babel --presets=es2015,stage-0 --plugins=transform-react-jsx src --out-dir build --copy-files"
   },
   "repository": {
     "type": "git",

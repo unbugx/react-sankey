@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import ReactSankey from '../src/components/react-sankey.component';
 
@@ -21,7 +20,7 @@ const nodes = {
   '11': createNode('Conversion', 348, 11),
   '12': createNode('Morocco', 1983082, 12),
   '13': createNode('South Africa', 1290205, 13),
-  '14': createNode('Show offer', 348123, 14),
+  '14': createNode('Italy', 348123, 14),
   '15': createNode('Conversion', 123, 15),
   '16': createNode('Mali', 1201, 16),
   '17': createNode('Conversion', 1302, 17),

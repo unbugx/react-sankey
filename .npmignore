@@ -1,3 +1,7 @@
-src/
 .storybook/
 stories/
+.DS_Store
+.idea/
+.settings/
+.vscode
+*.log
