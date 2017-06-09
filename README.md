@@ -1,5 +1,4 @@
 # react-sankey
-=========
 
 Sankey diagramm. **Still under active development.**
 
@@ -7,9 +6,9 @@ Sankey diagramm. **Still under active development.**
 
 See more examples in storybook `npm run storybook` - http://localhost:9001/ .
 
-##TODO
+## TODO
 *   Add lint
-*   Some improvements
+*   Add docs
 
 ## Installation
 
