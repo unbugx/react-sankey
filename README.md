@@ -1,6 +1,6 @@
 # react-sankey
 
-Sankey diagramm. **Still under active development.**
+Sankey diagramm.
 
 ![screenshot](screenshot.jpg?raw=true "Example")
 
@@ -8,7 +8,6 @@ See more examples in storybook `npm run storybook` - http://localhost:9001/ .
 
 ## TODO
 *   Add lint
-*   Add docs
 
 ## Installation
 
@@ -81,7 +80,75 @@ See more examples in storybook `npm run storybook` - http://localhost:9001/ .
         
     }
     
+## Props/Options
+*   nodes - `object`. Example:
 
+        {
+          0: {
+            title: 'Node 1',
+            value: 15,
+            id: '0'
+          },
+          1: {
+            title: 'Node 2',
+            value: 5,
+            id: '1'
+          },
+          2: {
+            title: 'Node 3',
+            value: 1,
+            id: '2'
+          }
+        }
+        
+*   links - `array`. Describes links between nodes. Example:
+
+        [
+          { sourceId: 0, targetId: 1 },
+          { sourceId: 1, targetId: 2 }
+        ]
+        
+*   rootID - `number | string`. Id of root node of chart
+*   hasArrows - `boolean`. Enable/disable arrows
+*   arrowClass - `string`. Adds custom class for tag `path` of arrows
+*   linkClass - `string`. Adds custom class for `path` between nodes
+*   chartConfig - `object`. To configure chart margins, paddings, node sizes. Default value:
+
+        const chartConfig = {
+          padding: { top: 10, right: 0, bottom: 10, left: 0 },
+          node: {
+            width: 150,
+            maxHeight: 150,
+            minHeight: 55,
+            rectMinHeight: 5,
+            paddingBottom: 40
+          },
+          link: {
+            width: 100
+          }
+        }
+
+*   customNode - `function`. Returns custom component for node and has two arguments - `chartConfig`, `node`. Example:
+
+        (chartConfig, node) => {
+          return (
+            <g key={node.id} transform={`translate(${node.x},${node.y})`}>
+              <rect 
+                height={node.height} 
+                width={chartConfig.node.width} 
+                style={{ stroke: '#ff5252', fill: 'url(#custom-linear-gradient)', strokeWidth: '1px' }} 
+              />
+              <text 
+                x={chartConfig.node.width / 2} 
+                y={node.height / 2} 
+                style={{ fontSize: '20px', fill: '#b57272', textAnchor: 'middle', alignmentBaseline: 'central' }}
+              >
+                {`${node.title}`}
+              </text>
+            </g>
+          )
+        }
+        
 
 ## Contributing
 
