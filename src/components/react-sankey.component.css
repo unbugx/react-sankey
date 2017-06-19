@@ -7,15 +7,15 @@ text {
     font-size: 13px;
 }
 
-.qb-value {
+.qb-node .qb-value {
     font-size: 16px;
 }
 
-tspan {
+.qb-node .qb-value tspan {
     fill: #eaeaea;
 }
 
-.qb-node-arrow {
+.qb-arrow .qb-node-arrow {
     stroke: #9ea2af;
     stroke-width: 1px
 }
